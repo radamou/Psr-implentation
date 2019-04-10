@@ -165,6 +165,7 @@ interface MessageInterface
      * the named header.
      *
      * @param string $name Case-insensitive header field name to remove.
+     * 
      * @return static
      */
     public function withoutHeader(string $name);
@@ -186,6 +187,7 @@ interface MessageInterface
      * new body stream.
      *
      * @param StreamInterface $body Body.
+     *
      * @return static
      *
      * @throws \InvalidArgumentException When the body is not valid.

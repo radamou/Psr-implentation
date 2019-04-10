@@ -54,7 +54,7 @@ interface ResponseInterface extends MessageInterface
      *
      * @throws \InvalidArgumentException For invalid status code arguments.
      */
-    public function withStatus($code, $reasonPhrase = '');
+    public function withStatus(int $code, $reasonPhrase = '');
 
     /**
      * Gets the response reason phrase associated with the status code.

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Internal\Psr\Http\Handler;
+namespace App\Internal\Psr\Http\Server\Handler;
 
-use App\Internal\Psr\Http\Message\ResponseInterface;
-use App\Internal\Psr\Http\Message\ServerRequestInterface;
+use App\Internal\Psr\Http\Message\Request\Server\ServerRequestInterface;
+use App\Internal\Psr\Http\Message\Response\ResponseInterface;
 
 /**
  * @inheritdoc

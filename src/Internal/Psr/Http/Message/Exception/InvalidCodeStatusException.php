@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Internal\Psr15\Server\Exception;
+namespace App\Internal\Psr\Http\Message\Exception;
 
 /**
  * Catch exception and transform it as a response object
@@ -9,7 +9,7 @@ namespace App\Internal\Psr15\Server\Exception;
  * to be sure that a response is always generated
  *
  */
-interface HandleExceptionInterface
+interface InvalidCodeStatusException
 {
 
 }
