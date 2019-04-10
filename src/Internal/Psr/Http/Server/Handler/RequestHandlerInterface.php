@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Internal\Psr\Server\Http;
+namespace App\Internal\Psr\Http\Handler;
 
-use App\Internal\Psr\Server\Message\ResponseInterface;
-use App\Internal\Psr\Server\Message\ServerRequestInterface;
+
+use App\Internal\Psr\Http\Message\ResponseInterface;
+use App\Internal\Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Individual Component that process a request and return a response (as defined by PSR7)
@@ -17,8 +18,8 @@ interface RequestHandlerInterface
     /**
      * Handle the Htttp Request and generate Http Response
      *
+     * @param ServerRequestInterface $serverRequest
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $serverRequest): ResponseInterface;
-
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Internal\Psr15\Server\Middleware;
+namespace App\Internal\Psr\Http\Server\Middleware;
 
-use App\Internal\Psr\Server\Http\RequestHandlerInterface;
-use App\Internal\Psr\Server\Message\ResponseInterface;
-use App\Internal\Psr\Server\Message\ServerRequestInterface;
+
+use App\Internal\Psr\Http\Handler\RequestHandlerInterface;
+use App\Internal\Psr\Http\Message\ResponseInterface;
+use App\Internal\Psr\Http\Message\ServerRequestInterface;
 
 /**
  * A Middleware is a an individual component that can participate to the process of
@@ -27,7 +28,12 @@ interface MiddlewareInterface
      *
      * If not, delegate to the response handler to generate a response
      *
+     * @param ServerRequestInterface $request
+     * @param  RequestHandlerInterface $requestHandler
      * @return ResponseInterface
      */
-    public function  process(ServerRequestInterface $request, RequestHandlerInterface $requestHandler): ResponseInterface;
+    public function  process(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $requestHandler
+    ): ResponseInterface;
 }
