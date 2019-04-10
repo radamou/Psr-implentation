@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Internal\Psr\Http\Message;
+namespace App\Internal\Psr\Http\Message\Response;
+
+use App\Internal\Psr\Http\Message\MessageInterface;
 
 /**
  * Representation of an outgoing, server-side response.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Internal\Http\Message;
+namespace App\Internal\Psr\Http\Message\Uri;
 
 /**
  * Value object representing a URI.

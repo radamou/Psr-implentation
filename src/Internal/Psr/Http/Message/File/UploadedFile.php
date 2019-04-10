@@ -3,7 +3,7 @@
 namespace App\Internal\Psr\Http\Message\File;
 
 
-use App\Internal\Http\Message\StreamInterface;
+use App\Internal\Psr\Http\Message\Stream\StreamInterface;
 
 class UploadedFile implements UploadedFileInterface
 {

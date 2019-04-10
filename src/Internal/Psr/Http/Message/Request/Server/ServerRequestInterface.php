@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Internal\Psr\Http\Message;
+namespace App\Internal\Psr\Http\Message\Request\Server;
+
+use App\Internal\Psr\Http\Message\Request\RequestInterface;
 
 /**
  * Representation of an incoming, server-side HTTP request.

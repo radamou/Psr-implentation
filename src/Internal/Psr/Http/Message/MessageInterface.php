@@ -2,7 +2,7 @@
 
 namespace App\Internal\Psr\Http\Message;
 
-use App\Internal\Http\Message\StreamInterface;
+use App\Internal\Psr\Http\Message\Stream\StreamInterface;
 
 /**
  * PSR-7

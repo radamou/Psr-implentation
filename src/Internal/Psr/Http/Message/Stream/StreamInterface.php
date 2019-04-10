@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Internal\Http\Message;
+namespace App\Internal\Psr\Http\Message\Stream;
 
 /**
  * Describes a data stream.

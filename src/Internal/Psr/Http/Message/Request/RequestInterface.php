@@ -1,6 +1,9 @@
 <?php
 
-namespace App\Internal\Psr\Http\Message;
+namespace App\Internal\Psr\Http\Message\Request;
+
+use App\Internal\Psr\Http\Message\MessageInterface;
+use App\Internal\Psr\Http\Message\Uri\UriInterface;
 
 interface RequestInterface extends MessageInterface
 {
@@ -20,7 +23,7 @@ interface RequestInterface extends MessageInterface
      *
      * @return string
      */
-    public function getRequestTarget();
+    public function getRequestTarget(): string;
 
     /**
      * Return an instance with the specific request-target.
@@ -37,6 +40,7 @@ interface RequestInterface extends MessageInterface
      * @see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
      *     request-target forms allowed in request messages)
      * @param mixed $requestTarget
+     *
      * @return static
      */
     public function withRequestTarget($requestTarget);
@@ -46,7 +50,7 @@ interface RequestInterface extends MessageInterface
      *
      * @return string Returns the request method.
      */
-    public function getMethod();
+    public function getMethod(): string;
 
     /**
      * Return an instance with the provided HTTP method.
@@ -60,6 +64,7 @@ interface RequestInterface extends MessageInterface
      * changed request method.
      *
      * @param string $method Case-sensitive method.
+     *
      * @return static
      * @throws \InvalidArgumentException for invalid HTTP methods.
      */
@@ -75,7 +80,7 @@ interface RequestInterface extends MessageInterface
      * @return UriInterface Returns a UriInterface instance
      *     representing the URI of the request.
      */
-    public function getUri();
+    public function getUri(): UriInterface;
 
     /**
      * Returns an instance with the provided URI.

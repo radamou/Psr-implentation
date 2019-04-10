@@ -2,7 +2,7 @@
 
 namespace App\Internal\Psr\Http\Message\File;
 
-use App\Internal\Http\Message\StreamInterface;
+use App\Internal\Psr\Http\Message\Stream\StreamInterface;
 
 /**
  * Value object representing a file uploaded through an HTTP request.
@@ -27,7 +27,7 @@ interface UploadedFileInterface
      * an exception.
      *
      * @return StreamInterface Stream representation of the uploaded file.
-     * 
+     *
      * @throws \RuntimeException in cases when no stream is available.
      * @throws \RuntimeException in cases when no stream can be created.
      */
