@@ -37,7 +37,7 @@ class Response implements ResponseInterface
     {
         Assert::string($version);
 
-        $response = new static($this->code, $this->reasonPhrase);
+        $response = clone $this;
         $response->protocolVersion = $version;
 
         return $response;
@@ -108,7 +108,7 @@ class Response implements ResponseInterface
         Assert::string($name);
         Assert::isArray($value);
 
-        $response = new static($this->code, $this->reasonPhrase);
+        $response = clone $this;
         $response->headers = $this->headers->addElement($name, $value);
 
         return $response;
@@ -119,7 +119,7 @@ class Response implements ResponseInterface
      */
     public function withoutHeader(string $name)
     {
-        $response = new static($this->code, $this->reasonPhrase);
+        $response = clone $this;
         $response->headers = $this->headers->offsetUnset($name);
 
         return $response;
@@ -140,7 +140,7 @@ class Response implements ResponseInterface
     {
         Assert::isInstanceOf($body, StreamInterface::class);
 
-        $response = new static($this->code, $this->reasonPhrase);
+        $response = clone $this;
         $response->body = $body;
 
         return $response;
