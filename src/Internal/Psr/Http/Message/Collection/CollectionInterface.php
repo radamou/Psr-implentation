@@ -2,7 +2,6 @@
 
 namespace App\Internal\Psr\Http\Message\Collection;
 
-
 interface CollectionInterface extends  \ArrayAccess
 {
     /**
@@ -37,8 +36,10 @@ interface CollectionInterface extends  \ArrayAccess
      * Unset the value corresponding to the offset
      *
      * @param mixed $offset
+     *
+     * @return self
      */
-    public function offsetUnset($offset): void;
+    public function offsetUnset($offset): self;
 
     /**
      * Return array with key to lower/Upper case
@@ -66,6 +67,8 @@ interface CollectionInterface extends  \ArrayAccess
      *
      * @param $key
      * @param $value
+     *
+     * @return self
      */
-    public function addHeader($key, $value): void;
+    public function addElement($key, $value): self;
 }

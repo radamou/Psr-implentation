@@ -2,6 +2,7 @@
 
 namespace App\Internal\Psr\Http\Message\Response;
 
+use App\Internal\Psr\Http\Message\Collection\CollectionInterface;
 use App\Internal\Psr\Http\Message\Stream\StreamInterface;
 use Webmozart\Assert\Assert;
 
@@ -10,6 +11,8 @@ class Response implements ResponseInterface
     private $code;
     private $reasonPhrase;
     private $protocolVersion;
+
+    /** @var CollectionInterface */
     private $headers;
     private $body;
 
@@ -45,7 +48,7 @@ class Response implements ResponseInterface
      */
     public function getHeaders(): array
     {
-        return $this->headers;
+        return $this->headers->ToArray();
     }
 
     /**
@@ -57,9 +60,7 @@ class Response implements ResponseInterface
             return false;
         }
 
-        $headers = \array_change_key_case($this->headers);
-
-        return isset($headers[\strtolower($name)]);
+        return $this->headers->offsetExists($name);
     }
 
     /**
@@ -71,9 +72,7 @@ class Response implements ResponseInterface
             return [];
         }
 
-        $headers = \array_change_key_case($this->headers);
-
-        return $headers[strtolower($name)];
+        return $this->headers->offsetGet($name);
     }
 
     /**
@@ -98,9 +97,7 @@ class Response implements ResponseInterface
        Assert::string($name);
        Assert::isArray($value);
 
-       $response = new static($this->code, $this->reasonPhrase);
-
-       return $response;
+       return new static($this->code, $this->reasonPhrase);
     }
 
     /**
@@ -108,7 +105,13 @@ class Response implements ResponseInterface
      */
     public function withAddedHeader(string $name, $value)
     {
-        // TODO: Implement withAddedHeader() method.
+        Assert::string($name);
+        Assert::isArray($value);
+
+        $response = new static($this->code, $this->reasonPhrase);
+        $response->headers = $this->headers->addElement($name, $value);
+
+        return $response;
     }
 
     /**
@@ -116,7 +119,10 @@ class Response implements ResponseInterface
      */
     public function withoutHeader(string $name)
     {
-        // TODO: Implement withoutHeader() method.
+        $response = new static($this->code, $this->reasonPhrase);
+        $response->headers = $this->headers->offsetUnset($name);
+
+        return $response;
     }
 
     /**

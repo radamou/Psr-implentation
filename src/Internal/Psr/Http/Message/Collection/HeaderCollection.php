@@ -37,18 +37,20 @@ class HeaderCollection implements CollectionInterface
     /**
      * @inheritdoc
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset($offset): CollectionInterface
     {
         foreach ($this->headers as $key => $value) {
             if (strtolower($offset) === strtolower($key)) {
                 unset($this->headers[$key]);
             }
         }
+
+        return $this;
     }
 
-    public function changeKeyCase(): array
+    public function changeKeyCase($case = CASE_LOWER): array
     {
-        return \array_change_key_case($this->headers);
+        return \array_change_key_case($this->headers, $case);
     }
 
     public function ToArray(): array
@@ -61,13 +63,15 @@ class HeaderCollection implements CollectionInterface
         return empty($this->headers);
     }
 
-    public function addHeader($key, $value): void
+    public function addElement($key, $value): CollectionInterface
     {
         if (!$this->offsetExists($key)) {
-            return;
+            return $this;
         }
 
         $this->offsetUnset($key);
         $this->offsetSet($key, $value);
+
+        return $this;
     }
 }
