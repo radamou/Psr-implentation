@@ -1,0 +1,6 @@
+version: '3'
+services:
+  code-quality:
+    build:
+      context: ./docker/code-quality
+      dockerfile: Dockerfile
