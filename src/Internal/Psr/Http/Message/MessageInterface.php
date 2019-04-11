@@ -165,7 +165,7 @@ interface MessageInterface
      * the named header.
      *
      * @param string $name Case-insensitive header field name to remove.
-     * 
+     *
      * @return static
      */
     public function withoutHeader(string $name);

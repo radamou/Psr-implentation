@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Internal\Psr\Http\Message\Response;
-
 
 use App\Internal\Psr\Http\Message\Stream\StreamInterface;
 use Webmozart\Assert\Assert;
@@ -97,7 +95,12 @@ class Response implements ResponseInterface
      */
     public function withHeader(string $name, $value)
     {
-        // TODO: Implement withHeader() method.
+       Assert::string($name);
+       Assert::isArray($value);
+
+       $response = new static($this->code, $this->reasonPhrase);
+
+       return $response;
     }
 
     /**
